@@ -19,9 +19,11 @@ failed="false"
 
 tempfile_jaeger="${tempdir}/DepcheckrcJaegerUI.json"
 node scripts/generateDepcheckrcJaegerUI.js "${tempfile_jaeger}"
+echo "\"ignore\": [\"@types/rollup-plugin-visualizer\", \"@vitejs/plugin-legacy\", \"@vitejs/plugin-react\", \"rollup-plugin-visualizer\", \"vite-plugin-imp\"x]" >> "${tempfile_jaeger}"
 if runDepcheck packages/jaeger-ui "${tempfile_jaeger}"; then
   failed="true"
 fi
+
 
 tempfile_plexus="${tempdir}/DepcheckrcPlexus.json"
 node scripts/generateDepcheckrcPlexus.js "${tempfile_plexus}"
